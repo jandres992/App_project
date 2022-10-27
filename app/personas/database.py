@@ -18,3 +18,19 @@ def query_r(sql):
     #    respuesta = False
 
     return respuesta, list
+
+
+def query_l(sql):
+    conn = pymysql.connect(host="localhost", port=3306, user="root", passwd="50c13d4d11", db="personas")
+    try:
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        conn.commit()
+        cursor.close()
+        conn.close()
+        respuesta = True
+    except:
+        respuesta = False
+
+    return respuesta
+
